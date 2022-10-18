@@ -13,7 +13,7 @@ while dice_sides > 20:
     print("Please enter an integer from 1 to 20: ")
     dice_sides = int(input("How many dice are we rolling? "))
 
-# Roll all dice single time and ask for another round
+# Roll all the dice single time and ask for another round
 for die in range(dice_number):
     number = randint(1,dice_sides)
     print(f"|{number}|", end="")
