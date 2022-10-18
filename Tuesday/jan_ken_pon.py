@@ -40,15 +40,15 @@ elif pc_move == 3:
 
 # Ask a user to enter their move
 print("=============================================================")
-user_move = int(input("Make your move, mortal! 1 - rock, 2 - paper, 3 - scissors: "))
+user_move = input("Make your move, mortal! 1 - rock, 2 - paper, 3 - scissors: ")
 
 # Print the rock, paper, or scissors ASCII art that corresponds to the player's move
 
-if user_move == 1:
+if user_move == "1":
     user_move = rock
-elif user_move == 2:
+elif user_move == "2":
     user_move = paper
-elif user_move == 3:
+elif user_move == "3":
     user_move = scissors
 else:
     print("Only 1, 2 and 3 are the options, human!");exit()
