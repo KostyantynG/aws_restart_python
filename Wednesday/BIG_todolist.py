@@ -1,4 +1,22 @@
-from curses.ascii import isdigit
+def user_prompt():
+    print("***********************************")
+    print("Enter a command. Type 'h' for help: ")
+    global user_input
+    user_input = input("> ")
+    return user_input
+
+def printing_tasks(todos):
+    for index, item in enumerate(todos, 1):
+        print(f"{index}) {item}")
+
+def printing_help():
+    print("""
+TODO LIST HELP
+Type 'q' or 'quit' to quit
+To add a todo to the list, type it and hit enter
+To complete a todo enter its number""")
+
+todos = []
 
 print("""
   _____         _           
@@ -10,37 +28,23 @@ print("""
 print()
 print()
 
-print("***********************************")
-print("Enter a command. Type 'h' for help: ")
-user_input = input("> ")
-todos = []
+user_prompt()
+
 while user_input != "q" and user_input != "quit":
+    
     if user_input == "h":
-        print("""
-TODO LIST HELP
-Type 'q' to quit
-To add a todo to the list, type it and hit enter
-To complete a todo enter its number""")
-        print("***********************************")
-        print("Enter a command. Type 'h' for help: ")
-        user_input = input("> ")
+        printing_help()
+        user_prompt()
     elif user_input == "":
-        print("***********************************")
-        print("Enter a command. Type 'h' for help: ")
-        user_input = input("> ")
+        printing_tasks(todos)
+        user_prompt()
     elif user_input.isdigit() and 0 < int(user_input) <= len(todos):
         todos.pop(int(user_input)-1)
-        for index, item in enumerate(todos, 1):
-            print(f"{index}) {item}")
-        print("***********************************")
-        print("Enter a command. Type 'h' for help: ")
-        user_input = input("> ")
+        printing_tasks(todos)
+        user_prompt()
     else:
         todos.append(user_input)
-        for index, item in enumerate(todos, 1):
-            print(f"{index}) {item}")
-        print("***********************************")
-        print("Enter a command. Type 'h' for help: ")
-        user_input = input("> ")
-for index, item in enumerate(todos, 1):
-    print(f"{index}) {item}")
+        printing_tasks(todos)
+        user_prompt()
+
+printing_tasks(todos)
